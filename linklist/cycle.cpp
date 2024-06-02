@@ -33,7 +33,6 @@ node* checkloop(node* head)
     return 0;
     node* slow=head;
     node*fast=head;
-    int f=0;
     while(fast!=NULL)
     {  
         fast=fast->next->next;
@@ -49,6 +48,17 @@ node* checkloop(node* head)
 }
 node* startloopnode(node* head){
 
+node* temp=checkloop(head);
+node* ptr=head;
+if(temp==NULL)
+return NULL;
+else
+while(temp!=ptr)
+{
+    ptr=ptr->next;
+    temp=temp->next;
+}
+return temp;
 }
 int main()
 {
@@ -68,6 +78,6 @@ int main()
         temp=temp->next;
     }
     ptr->next=temp;
-    
+    cout<<startloopnode(head)->data;
 
 }
